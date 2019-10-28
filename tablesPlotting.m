@@ -52,7 +52,7 @@ for j=2:2
     
     
     figure(j); hold off
-    plot_var = 3; %j;   
+    plot_var = 4; %j;   
     
     for i=1:npress
         filename2 = sprintf('table/co2_%s_table.dat',press{i});
@@ -77,21 +77,29 @@ for j=2:2
 
     xlabel(plot_var_name{1},'Interpreter','latex');
     ylabel(plot_var_name{plot_var},'Interpreter','latex');
+    
+    set(gca,'XMinorTick','on'); %,'XLabel',[],'XTickLabel',[])
+    set(gca,'YMinorTick','on'); %,'YLabel',[],'YTickLabel',[])
+    
     switch plot_var
         case 2
             axis([20 60 0 1000]);
+            yticks([0:200:1000]);
         case 3
             axis([20 60 0 1*10^-4]);
+            yticks([0:2*10^-5:1*10^-4]);
         case 4
             axis([20 60 0 0.12]);
+            yticks([0:0.02:0.12]);
         case 5
             axis([20 60 0 20]);
         case 6
             axis([20 60 200 600]);
     end
 
-    set(gca,'XMinorTick','on'); %,'XLabel',[],'XTickLabel',[])
-    set(gca,'YMinorTick','on'); %,'YLabel',[],'YTickLabel',[])
+   
+    
+    
     set(gca,'fontsize', fontsize);
 
     if((putlegend==1))
